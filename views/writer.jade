@@ -1,0 +1,10 @@
+//
+   Created by yohuang on 9/15/2014.
+extends layout
+block content
+    div(style="border: solid 1px gray; padding: 5px; margin: 5px;")
+        form(action="/articles", method="post")
+            p(style="display: inline-block") Title
+            input(type="text", name="title")
+            textarea(name="body", style="display: block")
+            button(type="submit") post!
