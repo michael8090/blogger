@@ -9,12 +9,15 @@ body
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
 a
   color: #00B7FF
+headerPadding = 5px
 #header
   width: 100%
   background: #333333
   box-shadow: 0 1px 2px 0px #333333
-  padding: 5px
+  padding: headerPadding
   box-sizing: border-box;
+  vertical-align: baseline;
+  position: relative;
 #title
   margin: 0;
   color: #ddd;
@@ -23,3 +26,9 @@ a
   font-size: 14pt;
   font-family: "Abel","Helvetica Neue",Helvetica,Arial,Sans-serif;
   text-decoration: none;
+
+#sign-in
+  position: absolute;
+  right: 10px;
+  bottom: headerPadding;
+

@@ -6,8 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stylus = require('stylus');
 var nib = require('nib');
+var LocalStrategy = require('passport-local');
+var passport = require('passport');
+var session = require('express-session');
 
-var routes = require('./routes/index');
+
+var index = require('./routes/index');
 var users = require('./routes/users'),
     articles = require('./routes/articles');
 
@@ -32,8 +36,32 @@ app.use(stylus.middleware({
     }
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    secret: 'im undefined!',
+    resave: true,
+    saveUninitialized: true
+}));
 
-app.use('/', routes);
+app.use(passport.initialize());
+app.use(passport.session());
+// Session-persisted message middleware
+app.use(function(req, res, next){
+    var err = req.session.error,
+        msg = req.session.notice,
+        success = req.session.success;
+
+    delete req.session.error;
+    delete req.session.success;
+    delete req.session.notice;
+
+    if (err) res.locals.error = err;
+    if (msg) res.locals.notice = msg;
+    if (success) res.locals.success = success;
+
+    next();
+});
+
+app.use('/', index);
 app.use('/users', users);
 app.use('/articles', articles);
 

@@ -4,7 +4,7 @@
 var mongoose = require('./db'),
     Schema = mongoose.Schema,
     ArticleSchema = new Schema({
-        author: String/*Schema.ObjectId*/,
+        author: Schema.ObjectId,
         title: String,
         body: String,
         date: Date
