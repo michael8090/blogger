@@ -2,8 +2,29 @@
 var debug = require('debug')('blogger');
 var app = require('../blogger');
 
-app.set('port', process.env.PORT || 3000);
+var https = require('https');
+var http = require('http');
+var fs = require('fs');
 
-var server = app.listen(app.get('port'), function() {
-  debug('Express server listening on port ' + server.address().port);
+var options = {
+    key: fs.readFileSync('./sslcert/key.pem', 'utf8'),
+    cert: fs.readFileSync('./sslcert/cert.pem', 'utf8')
+//    ca: fs.readFileSync('./sslcert/ca.csr'),
+//    requestCert: true
+};
+
+app.set('port', process.env.PORT || 3000);
+app.set('sslPort', process.env.SSLPORT || 4000);
+
+// Create an HTTP service.
+var httpServer = http.createServer(app).listen(app.get('port'), function () {
+    console.log('Express HTTP server listening on port ' + httpServer.address().port);
 });
+// Create an HTTPS service identical to the HTTP service.
+var httpsServer = https.createServer(options, app).listen(app.get('sslPort'), function () {
+    console.log('Express HTTPS server listening on port ' + httpsServer.address().port);
+});
+
+//var server = app.listen(app.get('port'), function() {
+//  debug('Express server listening on port ' + server.address().port);
+//});
