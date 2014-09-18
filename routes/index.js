@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
 
 router.get('/writer', function (req ,res) {
     if (!req.isAuthenticated()) {
-        res.send("Not signed in");
+        res.redirect('/login');
     } else {
         res.render('writer', {title: req.title, body: req.body});
     }

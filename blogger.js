@@ -8,6 +8,13 @@ var stylus = require('stylus');
 var nib = require('nib');
 var passport = require('./controller/passport');
 var session = require('express-session');
+//var md = require('markdown').markdown.toHTML;
+var md = require('marked');
+md.setOptions({
+    gfm: true,
+    breaks: true
+});
+
 
 
 var index = require('./routes/index'),
@@ -66,10 +73,12 @@ app.use(function(req, res, next){
 });
 
 //make the views know when to show the authenticated content
+//use markdown
 app.use(function (req, res, next) {
     var backup = res.render;
     res.render = function (template, data) {
         data = data || {};
+        data.md = md;
         data.isLoggedIn = req.isAuthenticated();
         backup.call(this, template, data);
     };

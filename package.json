@@ -23,6 +23,8 @@
         "passport-google": "^0.3.0",
         "passport-local": "^1.0.0",
         "passport-twitter": "^1.0.2",
-        "express-session": "*"
+        "express-session": "*",
+        "marked": ">=0.3.2",
+        "markdown": ">=0.5.0"
     }
 }

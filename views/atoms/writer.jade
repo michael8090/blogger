@@ -1,8 +1,13 @@
 //
    Created by yohuang on 9/15/2014.
-div(style="border: solid 1px gray; padding: 5px; margin: 5px;")
-    form(action="/articles", method="post")
-        p(style="display: inline-block") Title
-        input(type="text", name="title")
-        textarea(name="body", style="display: block")
-        button(type="submit") post!
+script(src="/lib/markdown.min.js")
+div.writer
+    div.edit-area
+        form(action="/articles", method="post")
+            input#text-title(type="text", name="title", placeholder="Title")
+            textarea#text-input(name="body", placeholder="What's in your mind?", oninput="this.editor.update()")
+            button(type="submit") post!
+    div.preview-area
+        p(style="text-align: center") Preview
+        div.preview-result(id="preview")
+    script(src="/lib/useMarkdown.js")

@@ -1,6 +1,8 @@
 //
    Created by yohuang on 9/15/2014.
-each article in articles
-    div(style="border: solid 1px gray; padding: 5px; margin: 5px;")
-        h2= article.title
-        span= article.body
+link(rel='stylesheet', href='/stylesheets/github-markdown.css')
+div.article-container
+    each article in articles
+        article.markdown-body
+            div!= md("# " + article.title)
+            div!= md(article.body)

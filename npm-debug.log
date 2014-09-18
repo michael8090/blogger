@@ -3,8 +3,8 @@
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'run',
 1 verbose cli   'start' ]
-2 info using npm@1.4.23
-3 info using node@v0.10.31
+2 info using npm@1.3.21
+3 info using node@v0.10.24
 4 verbose node symlink C:\Program Files\nodejs\\node.exe
 5 verbose run-script [ 'prestart', 'start', 'poststart' ]
 6 info prestart blogger@0.0.2
@@ -23,8 +23,8 @@
 11 error There is likely additional logging output above.
 12 error System Windows_NT 6.1.7601
 13 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "start"
-14 error cwd D:\research\express\blogger
-15 error node -v v0.10.31
-16 error npm -v 1.4.23
+14 error cwd D:\WorkSpace\GitHub\blogger
+15 error node -v v0.10.24
+16 error npm -v 1.3.21
 17 error code ELIFECYCLE
 18 verbose exit [ 1, true ]
