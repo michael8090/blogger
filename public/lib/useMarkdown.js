@@ -7,7 +7,7 @@
         this.update = function () {
             var title = $('text-title').value,
                 body = input.value.replace(/\n/g, '  \n');
-            preview.innerHTML = markdown.toHTML( '# ' + title + '\n' + body);
+            preview.innerHTML = markdown.toHTML( '# ' + title + '\n\n' + body);
         };
         input.editor = this;
         this.update();

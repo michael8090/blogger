@@ -1,5 +1,6 @@
 //
    Created by yohuang on 9/15/2014.
+link(rel='stylesheet', href='/stylesheets/github-markdown.css')
 script(src="/lib/markdown.min.js")
 div.writer
     div.edit-area
@@ -9,5 +10,5 @@ div.writer
             button(type="submit") post!
     div.preview-area
         p(style="text-align: center") Preview
-        div.preview-result(id="preview")
+        div.preview-result.markdown-body(id="preview")
     script(src="/lib/useMarkdown.js")
