@@ -1,7 +1,7 @@
 /**
  * Created by yohuang on 9/12/2014.
  */
-var mongoose = require('./db'),
+var mongoose = require('./mongoose'),
     Schema = mongoose.Schema,
     ArticleSchema = new Schema({
         author: Schema.ObjectId,

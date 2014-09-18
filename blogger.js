@@ -6,8 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stylus = require('stylus');
 var nib = require('nib');
-var LocalStrategy = require('passport-local');
-var passport = require('passport');
+var passport = require('./controller/passport');
 var session = require('express-session');
 
 
