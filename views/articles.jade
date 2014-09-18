@@ -1,7 +1,6 @@
 //
    Created by yohuang on 9/15/2014.
-each article in articles
-    div(style="border: solid 1px gray; padding: 5px; margin: 5px;")
-        h2= article.title
-        span= article.body
-include writer
+extends containers/layout
+block content
+    include atoms/header
+    include atoms/articles

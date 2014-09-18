@@ -1,8 +1,4 @@
-extends layout
-
+extends containers/layout
 block content
-    div#header
-        a(href="/")#title= title
-        a(href="/signin")#sign-in sign in
-    include articles
-
+    include atoms/header
+    include atoms/articles

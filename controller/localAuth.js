@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs'),
     Q = require('q'),
     Author = require('../models/author');
 
-exports.register = function (username, password) {
+exports.register = function (username, password, email) {
     var deferred = Q.defer();
     Author.findOne({username: username}, function(err, author) {
         if (err) {
@@ -16,11 +16,12 @@ exports.register = function (username, password) {
             author = new Author();
             author.username = username;
             author.passwordHash = bcrypt.hashSync(password, 8);
+            author.email = email;
             author.save(function (err) {
                 if (err) {
                     deferred.reject(err);
                 } else {
-                    deferred.resolve();
+                    deferred.resolve(author);
                 }
             });
         }
@@ -31,13 +32,16 @@ exports.register = function (username, password) {
 exports.authorize = function (username, password) {
     var deferred = Q.defer();
     Author.findOne({
-        username: username,
-        passwordHash: bcrypt.hashSync(password, 8)
+        username: username
     }, function (err, author) {
         if (err || !author) {
-            deferred.reject(err || 'invalid username and password pair');
+            deferred.reject(err || new Error('invalid username and password pair'));
         } else {
-            deferred.resolve();
+            if (bcrypt.compareSync(password, author.passwordHash)) {
+                deferred.resolve(author);
+            } else {
+                deferred.reject(new Error('invalid username and password pair'));
+            }
         }
     });
     return deferred.promise;

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Article = require('../models/article').Article;
-var passport = require('passport');
+var passport = require('../controller/passport');
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -10,28 +10,39 @@ router.get('/', function (req, res) {
             res.send(err);
         } else {
             res.render('index', {
-                title: 'undefined.im',
                 articles: articles
             });
         }
     });
 });
 
+router.get('/writer', function (req ,res) {
+    if (!req.isAuthenticated()) {
+        res.send("Not signed in");
+    } else {
+        res.render('writer', {title: req.title, body: req.body});
+    }
+});
+
 //displays our signup page
-router.get('/signin', function (req, res) {
-    res.render('signin');
+router.get('/login', function (req, res) {
+    if (req.isAuthenticated()) {
+        res.render('index');
+    } else {
+        res.render('login');
+    }
 });
 
 //sends the request through our local signup strategy, and if successful takes user to homepage, otherwise returns then to signin page
-router.post('/local-reg', passport.authenticate('local-signup', {
+router.post('/register', passport.authenticate('local-signup', {
     successRedirect: '/',
-    failureRedirect: '/signin'
+    failureRedirect: '/login'
 }));
 
 //sends the request through our local login/signin strategy, and if successful takes user to homepage, otherwise returns then to signin page
 router.post('/login', passport.authenticate('local-signin', {
     successRedirect: '/',
-    failureRedirect: '/signin'
+    failureRedirect: '/login'
 }));
 
 //logs user out of site, deleting them from the session, and returns to homepage

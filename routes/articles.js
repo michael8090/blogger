@@ -10,13 +10,12 @@ router.route('/')
             data = req.body;
         article.title = data.title;
         article.body = data.body;
-        article.author = 'anonymous';
+        article.author = req.user.id;
         article.date = new Date();
         article.save(function (err) {
             if (err) {
                 res.send(err);
             } else {
-                //res.json({message: 'Article created!'});
                 Article.find(function (err, articles) {
                     if (err) {
                         res.send(err);

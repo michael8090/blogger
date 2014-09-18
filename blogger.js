@@ -10,8 +10,7 @@ var passport = require('./controller/passport');
 var session = require('express-session');
 
 
-var index = require('./routes/index');
-var users = require('./routes/users'),
+var index = require('./routes/index'),
     articles = require('./routes/articles');
 
 var app = express();
@@ -53,15 +52,31 @@ app.use(function(req, res, next){
     delete req.session.success;
     delete req.session.notice;
 
-    if (err) res.locals.error = err;
-    if (msg) res.locals.notice = msg;
-    if (success) res.locals.success = success;
+    if (err){
+        res.locals.error = err;
+    }
+    if (msg) {
+        res.locals.notice = msg;
+    }
+    if (success) {
+        res.locals.success = success;
+    }
 
     next();
 });
 
+//make the views know when to show the authenticated content
+app.use(function (req, res, next) {
+    var backup = res.render;
+    res.render = function (template, data) {
+        data = data || {};
+        data.isLoggedIn = req.isAuthenticated();
+        backup.call(this, template, data);
+    };
+    next();
+});
+
 app.use('/', index);
-app.use('/users', users);
 app.use('/articles', articles);
 
 // catch 404 and forward to error handler
