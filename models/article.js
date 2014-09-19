@@ -10,4 +10,18 @@ var mongoose = require('./mongoose'),
         date: Date
     });
 
-exports.Article = mongoose.model('Article', ArticleSchema);
+var Article = module.exports= mongoose.model('Article', ArticleSchema);
+
+//utils
+
+Article.getSome = function (n, callback) {
+    if (typeof n === 'function') {
+        callback = n;
+        n = 5;
+    }
+    Article
+        .find({date: {$lte: Date.now()}})
+        .sort({date: -1})
+        .limit(n)
+        .exec(callback);
+};

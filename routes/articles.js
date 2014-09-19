@@ -2,7 +2,7 @@
  * Created by yohuang on 9/12/2014.
  */
 var router = require('express').Router(),
-    Article = require('../models/article').Article;
+    Article = require('../models/article');
 
 router.route('/')
     .post(function (req, res) {
@@ -16,17 +16,18 @@ router.route('/')
             if (err) {
                 res.send(err);
             } else {
-                Article.find(function (err, articles) {
+                Article.getSome(10, function (err, articles) {
                     if (err) {
                         res.send(err);
                     } else {
                         res.render('articles', {articles: articles});
                     }
-                });            }
+                });
+            }
         });
     })
     .get(function (req, res) {
-        Article.find(function (err, articles) {
+        Article.getSome(10, function (err, articles) {
             if (err) {
                 res.send(err);
             } else {

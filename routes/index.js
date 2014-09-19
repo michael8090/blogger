@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var Article = require('../models/article').Article;
+var Article = require('../models/article');
 var passport = require('../controller/passport');
 
 /* GET home page. */
 router.get('/', function (req, res) {
-    Article.find(function (err, articles) {
+    Article.getSome(function (err, articles) {
         if (err) {
             res.send(err);
         } else {
