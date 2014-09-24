@@ -5,9 +5,11 @@ var mongoose = require('./mongoose'),
     Schema = mongoose.Schema,
     ArticleSchema = new Schema({
         author: Schema.ObjectId,
+        authorName: String,//shortcut
         title: String,
         body: String,
-        date: Date
+        createdDate: Date,
+        modifiedDate: Date
     });
 
 var Article = module.exports= mongoose.model('Article', ArticleSchema);
@@ -20,8 +22,8 @@ Article.getSome = function (n, callback) {
         n = 5;
     }
     Article
-        .find({date: {$lte: Date.now()}})
-        .sort({date: -1})
+        .find({createdDate: {$lte: Date.now()}})
+        .sort({createdDate: -1})
         .limit(n)
         .exec(callback);
 };

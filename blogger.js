@@ -8,12 +8,11 @@ var stylus = require('stylus');
 var nib = require('nib');
 var passport = require('./controller/passport');
 var session = require('express-session');
-//var md = require('markdown').markdown.toHTML;
 var md = require('marked');
-md.setOptions({
-    gfm: true,
-    breaks: true
-});
+//md.setOptions({
+//    gfm: true,
+//    breaks: true
+//});
 
 
 

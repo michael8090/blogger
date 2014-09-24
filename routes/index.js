@@ -20,7 +20,22 @@ router.get('/writer', function (req ,res) {
     if (!req.isAuthenticated()) {
         res.redirect('/login');
     } else {
-        res.render('writer', {title: req.title, body: req.body});
+        res.render('writer');
+    }
+});
+
+router.get('/writer/:article_id', function (req ,res) {
+    if (!req.isAuthenticated()) {
+        res.redirect('/login');
+    } else {
+        var id = req.params.article_id;
+        Article.findById(id, function (err, article) {
+            if (!err && article) {
+                res.render('writer', {id: id, title: article.title, body: article.body});
+            } else {
+                res.render('writer');
+            }
+        });
     }
 });
 

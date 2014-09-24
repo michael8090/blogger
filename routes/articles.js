@@ -4,6 +4,14 @@
 var router = require('express').Router(),
     Article = require('../models/article');
 
+router.use(function(req, res, next) {
+    if (!req.isAuthenticated()) {
+        res.send({error: 'Not authorized'});
+    } else {
+        next();
+    }
+});
+
 router.route('/')
     .post(function (req, res) {
         var article = new Article(),
@@ -11,7 +19,8 @@ router.route('/')
         article.title = data.title;
         article.body = data.body;
         article.author = req.user.id;
-        article.date = new Date();
+        article.authorName = req.user.username;
+        article.createdDate = new Date();
         article.save(function (err) {
             if (err) {
                 res.send(err);
@@ -46,14 +55,14 @@ router.route('/:article_id')
             }
         });
     })
-    .put(function (req, res) {
+    .post(function (req, res) {
         Article.findById(req.params.article_id, function (err, article) {
             if (err) {
                 res.send(err);
             } else {
                 article.title = req.body.name;
                 article.body = req.body.body;
-                article.date = new Date();
+                article.modifiedDate = new Date();
                 article.save(function (err) {
                     if (err) {
                         res.send(err);
@@ -63,8 +72,10 @@ router.route('/:article_id')
                 });
             }
         });
-    })
-    .delete(function (req, res) {
+    });
+
+router.route('/delete/:article_id')
+    .get(function (req, res) {
         Article.remove({
             _id: req.params.article_id
         }, function (err, article) {

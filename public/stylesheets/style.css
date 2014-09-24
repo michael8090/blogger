@@ -57,6 +57,11 @@ article,
   margin: 5px auto 5px auto;
   padding: 10px 5px 10px 5px;
 }
+.article-info {
+  float: left;
+  color: #bbb;
+  font-size: 8pt;
+}
 .writer {
   width: 90%;
   min-height: 650px;
@@ -91,4 +96,14 @@ article,
   width: 50%;
   height: 100%;
   padding: 5px;
+}
+.options {
+  float: right;
+}
+.options a {
+  padding-left: 5px;
+}
+.reference {
+  color: #0086b3;
+  font-weight: bold;
 }

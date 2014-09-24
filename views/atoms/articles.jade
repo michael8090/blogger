@@ -4,5 +4,13 @@ link(rel='stylesheet', href='/stylesheets/github-markdown.css')
 div.article-container
     each article in articles
         article.markdown-body
-            div!= md("# " + article.title)
-            div!= md(article.body)
+            p.article-info
+                span created by
+                span.reference  #{article.authorName}
+                span  at #{article.createdDate}
+            if isLoggedIn
+                div.edit-toolbar
+                    div.options
+                        a(href='/writer/'+article.id) edit
+                        a(href='/articles/delete/'+article.id) delete
+            div!= md("# " + article.title + '\n' + article.body)

@@ -1,14 +1,17 @@
 //
    Created by yohuang on 9/15/2014.
 link(rel='stylesheet', href='/stylesheets/github-markdown.css')
-script(src="/lib/markdown.min.js")
+script(src="/lib/marked.min.js")
+- var action = id ? '/articles/' + id :  "/articles";
+- var actionLabel = id ? 'update' : 'post!';
 div.writer
-    div.edit-area
-        form(action="/articles", method="post")
-            input#text-title(type="text", name="title", placeholder="Title")
-            textarea#text-input(name="body", placeholder="What's in your mind?", oninput="this.editor.update()")
-            button(type="submit") post!
+    div.edit-area(oninput="this.preview()")
+        form(action= action, method="post")
+            input#text-title(type="text", name="title", placeholder="Title", value= title)
+            textarea#text-body(name="body", placeholder="What's in your mind?") #{body}
+            button#submitButton(type="submit") #{actionLabel}
     div.preview-area
-        p(style="text-align: center") Preview
+        p(style="text-align: center") preview
         div.preview-result.markdown-body(id="preview")
+
     script(src="/lib/useMarkdown.js")
