@@ -17,7 +17,7 @@ passport.use('local-signin', new LocalStrategy(
             })
             .fail(function (err) {
                 req.session.error = 'Could not log user in.';
-                done(err);
+                done(new Error(err));
             });
     }
 ));
@@ -32,7 +32,7 @@ passport.use('local-signup', new LocalStrategy(
             })
             .fail(function (err) {
                 req.session.error = 'Could not log user in.';
-                done(err);
+                done(new Error(err));
             });
     }
 ));
