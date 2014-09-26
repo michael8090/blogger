@@ -60,7 +60,7 @@ router.route('/:article_id')
             if (err) {
                 res.send(err);
             } else {
-                article.title = req.body.name;
+                article.title = req.body.title;
                 article.body = req.body.body;
                 article.modifiedDate = new Date();
                 article.save(function (err) {
