@@ -1,0 +1,17 @@
+{
+  "name": "blogger",
+  "version": "0.0.0",
+  "homepage": "https://github.com/michael8090/blogger",
+  "authors": [
+    "undefined.im@gmail.com"
+  ],
+  "description": "a simple blogger",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

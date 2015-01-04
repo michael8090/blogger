@@ -10,7 +10,8 @@ router.get('/', function (req, res) {
             res.send(err);
         } else {
             res.render('index', {
-                articles: articles
+                articles: articles,
+                title: 'undefined.im'
             });
         }
     });
@@ -39,12 +40,21 @@ router.get('/writer/:article_id', function (req ,res) {
     }
 });
 
-//displays our signup page
+//displays our login page
 router.get('/login', function (req, res) {
     if (req.isAuthenticated()) {
         res.render('index');
     } else {
         res.render('login');
+    }
+});
+
+//displays our register page
+router.get('/register', function (req, res) {
+    if (req.isAuthenticated()) {
+        res.render('index');
+    } else {
+        res.render('register');
     }
 });
 

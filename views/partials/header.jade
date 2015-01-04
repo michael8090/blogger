@@ -1,0 +1,23 @@
+//
+   Created by yohuang on 9/18/2014.
+div.sticky#header
+    nav.top-bar(data-topbar role="navigator")
+        ul.title-area
+            li.name
+                h1
+                    a.uppercase(href="/") undefined.im
+            li.toggle-topbar.menu-icon
+                a(href="#")
+                    span
+        section.top-bar-section
+            ul.right
+                if isLoggedIn
+                    li
+                        a(href="/writer") create
+                    li
+                        a(href="/logout") sign out
+                else
+                    li
+                        a(href="/login") sign in
+                    li
+                        a(href="/register") sign up

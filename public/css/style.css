@@ -1,14 +1,3 @@
-html {
-  height: 100%;
-  display: block;
-}
-body {
-  padding: 0;
-  margin: 0;
-  display: block;
-  height: 100%;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 a {
   color: #00b7ff;
 }
@@ -18,11 +7,7 @@ textarea input {
 #header {
   width: 100%;
   background: #333;
-  box-shadow: 0 1px 2px 0px #333;
-  padding: 5px;
-  box-sizing: border-box;
-  vertical-align: baseline;
-  position: relative;
+  box-shadow: 0 1px 2px 0 #333;
 }
 #title {
   margin: 0;
@@ -32,11 +17,6 @@ textarea input {
   font-size: 14pt;
   font-family: "Abel", "Helvetica Neue", Helvetica, Arial, Sans-serif;
   text-decoration: none;
-}
-.float-right {
-  position: absolute;
-  right: 10px;
-  bottom: 5px;
 }
 .vertical-margins {
   margin: 0 5px 0 5px;
@@ -84,14 +64,13 @@ article,
 .writer .edit-area form textarea {
   border: none;
   width: 100%;
-  height: 100%;
+  height: 90%;
   box-sizing: border-box;
 }
 .writer .preview-area {
   vertical-align: top;
   margin-left: 2px;
   display: inline-block;
-  border-left: 1px solid #555;
   box-sizing: border-box;
   width: 50%;
   height: 100%;
@@ -106,4 +85,10 @@ article,
 .reference {
   color: #0086b3;
   font-weight: bold;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.padding {
+  padding: 5px;
 }

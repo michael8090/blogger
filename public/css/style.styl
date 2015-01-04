@@ -1,27 +1,14 @@
-html
-  height: 100%
-  display: block
-body
-  padding: 0
-  margin: 0
-  display: block
-  height: 100%
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
 a
   color: #00B7FF
 
 textarea input
   border-color: #bbbbbb
 
-headerPadding = 5px
 #header
   width: 100%
   background: #333333
-  box-shadow: 0 1px 2px 0px #333333
-  padding: headerPadding
-  box-sizing: border-box;
-  vertical-align: baseline;
-  position: relative;
+  box-shadow: 0 1px 2px 0 #333333
+
 #title
   margin: 0;
   color: #ddd;
@@ -30,11 +17,6 @@ headerPadding = 5px
   font-size: 14pt;
   font-family: "Abel","Helvetica Neue",Helvetica,Arial,Sans-serif;
   text-decoration: none;
-
-.float-right
-  position: absolute;
-  right: 10px;
-  bottom: headerPadding;
 
 .vertical-margins
   margin: 0 5px 0 5px
@@ -76,13 +58,12 @@ article
       textarea
         border: none;
         width: 100%;
-        height: 100%;
+        height: 90%;
         box-sizing: border-box;
   .preview-area
     vertical-align: top;
     margin-left: 2px;
     display: inline-block;
-    border-left: 1px solid #555555
     box-sizing: border-box
     width: 50%
     height: 100%
@@ -96,3 +77,11 @@ article
 .reference
   color: #0086b3
   font-weight: bold
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.padding {
+  padding: 5px;
+}
